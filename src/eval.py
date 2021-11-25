@@ -47,7 +47,7 @@ def eval_test_recos(test_df, profiles_df, mode='ml', model=None,
                      topk=5, threshold=0.25, multiprocessing=True):
 
     model = pickle.load(
-        open(f'{av.model}-model.pkl', 'rb')) if mode == 'ml' else None
+        open(f'{model}-model.pkl', 'rb')) if mode == 'ml' else None
 
     if not multiprocessing:
         rel_scores = []  # container for test relevancy scores
