@@ -82,7 +82,8 @@ if __name__ == "__main__":
     test_df = test_df.fillna('')
     profiles_df = profiles_df.fillna('')
 
-    test_df = test_df.sample(100)
+    test_df = test_df.sample(av.samplesize)
+    del av.samplesize
 
     eval_score = eval_test_recos(test_df, profiles_df, **av.__dict__)
 
