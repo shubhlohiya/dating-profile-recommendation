@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from proxy_label_assignment import get_proxy_label
-from feature_utils import get_compatibility_feature, compatibility_score_naive
+from feature_utils import get_compatibility_feature
 from tqdm import tqdm
 from concurrent.futures import ProcessPoolExecutor
 from itertools import repeat
@@ -28,9 +28,9 @@ def check_location_compatibility(X, Y):
 def iscandidate(X, Y):
     """Returns whether X and Y are mutually valid candidates.
     Reciprocal compatibility is checked by our framework."""
-    return check_gender_and_orientation(X, Y) and \
-        check_gender_and_orientation(Y, X) and \
-            check_location_compatibility(X, Y)
+    return check_location_compatibility(X, Y) and \
+        check_gender_and_orientation(X, Y) and \
+        check_gender_and_orientation(Y, X)
 
 
 def generate_traindata_for_profile(i, df, num_pairs):
@@ -56,7 +56,17 @@ def generate_traindata_for_profile(i, df, num_pairs):
 
     return X, y
 
-def generate_trainset(df, per_profile_pairs=10, save=True):
+def generate_trainset(df, per_profile_pairs=10):
+    """Generates training data with proxy labels
+
+    Args:
+        df (pandas.DataFrame): profile data from train set
+        per_profile_pairs (int, optional): max number of pairs to \
+            sample per profile. Defaults to 10.
+
+    Returns:
+        (ndarray, ndarray): train_X, train_y
+    """
     X, y = [], []
     # for i, row in tqdm(df.iterrows(), total=len(df)):
     #     X_temp, y_temp = generate_traindata_for_profile(row.to_dict(),
@@ -64,7 +74,7 @@ def generate_trainset(df, per_profile_pairs=10, save=True):
     #     X += X_temp
     #     y += y_temp
     n = len(df)
-    with ProcessPoolExecutor() as executor:
+    with ProcessPoolExecutor() as executor: # use multiprocessing to speed up
         results = list(tqdm(executor.map(generate_traindata_for_profile,
          range(n), repeat(df, n), repeat(per_profile_pairs, n)), total=n))
 
