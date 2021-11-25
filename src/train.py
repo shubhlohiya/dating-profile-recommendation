@@ -17,7 +17,7 @@ def train(X, y, model='logistic', feed_dict={}):
 
     models = {
         'logistic': linear_model.LogisticRegression,
-        'SVM': svm.SVC,
+        'SVM': svm.LinearSVC,
         'MLP': neural_network.MLPClassifier
     }
 
@@ -38,13 +38,13 @@ def train(X, y, model='logistic', feed_dict={}):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=False, default='logistic')
-    ap.add_argument("--feed-dict", required=False, default=None, type='str')
+    ap.add_argument("--feed-dict", required=False, default=dict())
     av = ap.parse_args()
 
     train_X = np.load('../data/trainX.npy')
     train_y = np.load('../data/trainy.npy')
     
-    feed_dict = eval(av.feed_dict) if av.feed_dict is not None else dict()
+    feed_dict = eval(av.feed_dict) if av.feed_dict else dict()
 
     assert isinstance(feed_dict, dict), 'feed_dict must be of dictionary type'
 
