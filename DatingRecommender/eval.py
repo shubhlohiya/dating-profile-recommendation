@@ -32,12 +32,14 @@ def get_recommendation(A, df, mode='ml', model=None, topk=5, threshold=0.25):
     matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
     if len(matches) > 100:
         matches = matches.sample(100)  # restrict candidate pool
-
+    elif len(matches) == 0:
+        return None, None
     X, y = [], []
     for i, row in matches.iterrows():
         X.append(get_compatibility_feature(A, row.to_dict()))
         y.append(get_proxy_label(A, row.to_dict()))
     X, y = np.asarray(X), np.asarray(y)
+    X.reshape((-1, X.shape[-1]))
 
     if mode == 'naive':
         scores = np.mean(X, axis=-1)
@@ -100,7 +102,9 @@ def eval_test_recos(test_df, profiles_df, mode='ml', model=None,
             rel_scores = list(tqdm(executor.map(process, range(n), repeat(test_df, n),
                                                 repeat(profiles_df, n), repeat(
                                                     mode, n), repeat(model, n),
-                                                repeat(topk, n), repeat(threshold, n)), total=n))
+                                                repeat(topk, n), repeat(threshold, n)),
+                                                total=n, leave=False))
+    rel_scores = [score for score in rel_scores if score is not None]
     return np.mean(rel_scores)
 
 
