@@ -8,11 +8,6 @@ import nltk
 # nltk.download('stopwords')
 
 
-def compatibility_score_naive(X, Y):
-    """Does naive computation of compatibility score as mean of the compatibility feature vector."""
-    return np.mean(get_compatibility_feature(X, Y))
-
-
 def clean_and_process_text(tokens, stemmer=PorterStemmer(),
                            stop_words=stopwords.words('english')):
     """Applies stemming and casefolding on text, removes stopwords."""
