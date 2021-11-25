@@ -110,7 +110,7 @@ if __name__ == "__main__":
     ap.add_argument("--model", required=False, default='logistic')
     ap.add_argument("--topk", required=False, type=int, default=5)
     ap.add_argument("--threshold", required=False, type=float, default=0.25)
-    ap.add_argument("--samplesize", required=False, type=int, default=100)
+    ap.add_argument("--testsize", required=False, type=int, default=None)
 
     av = ap.parse_args()
 
@@ -120,8 +120,8 @@ if __name__ == "__main__":
     test_df = test_df.fillna('')
     profiles_df = profiles_df.fillna('')
 
-    test_df = test_df.sample(av.samplesize)
-    del av.samplesize
+    test_df = test_df.sample(av.testsize) if av.testsize else test_df
+    del av.testsize
 
     eval_score = eval_test_recos(test_df, profiles_df, **av.__dict__)
 
