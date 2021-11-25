@@ -82,7 +82,6 @@ def generate_trainset(df, per_profile_pairs=10, save=True):
 if __name__ == "__main__":
     df = pd.read_csv('../data/train.csv')
     df = df.fillna('')
-    df = df.iloc[:1000]
 
     X, y = generate_trainset(df)
 
