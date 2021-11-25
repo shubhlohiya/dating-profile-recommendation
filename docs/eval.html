@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>DatingRecommender.eval API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>DatingRecommender.eval</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import argparse
+import numpy as np
+import pandas as pd
+import pickle
+from proxy_label_assignment import get_proxy_label
+from feature_utils import get_compatibility_feature
+from train_data_gen import iscandidate
+from tqdm import tqdm
+from concurrent.futures import ProcessPoolExecutor
+from itertools import repeat
+
+
+def get_recommendation(A, df, mode=&#39;ml&#39;, model=None, topk=5, threshold=0.25):
+    &#34;&#34;&#34;Returns recommended dating profiles for input user A from database df.
+
+    Args:
+        A (dict): Input user profile
+        df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from [&#39;naive&#39;, &#39;ml&#39;]. Defaults to &#39;ml&#39;.
+            &#39;naive&#39; calculates score by simple averaging.
+            &#39;ml&#39; calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+
+    Returns:
+        (list[dict], list[int]): (topk profiles, boolean relevancy score)
+    &#34;&#34;&#34;
+    # A = df.iloc[i].to_dict()
+    matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
+    if len(matches) &gt; 100:
+        matches = matches.sample(100)  # restrict candidate pool
+
+    X, y = [], []
+    for i, row in matches.iterrows():
+        X.append(get_compatibility_feature(A, row.to_dict()))
+        y.append(get_proxy_label(A, row.to_dict()))
+    X, y = np.asarray(X), np.asarray(y)
+
+    if mode == &#39;naive&#39;:
+        scores = np.mean(X, axis=-1)
+    elif mode == &#39;ml&#39;:
+        assert model is not None, &#34;In ML mode, trained model must be provided.&#34;
+        scores = model.predict_proba(X)[:, 1]
+
+    reco_indices = (-scores).argsort()[:topk]
+    reco_profiles = df.iloc[reco_indices].to_dict(&#39;records&#39;)
+    reco_scores, reco_y = scores[reco_indices], y[reco_indices]
+
+    reco_relevance = int(((1*(reco_scores &gt;= threshold) @ reco_y) /
+                          len(reco_y)) &gt;= 0.6) if len(scores) &gt; topk else 1
+
+    return reco_profiles, reco_relevance
+
+
+def process(i, test_df, profiles_df, mode, model, topk, threshold):
+    &#34;&#34;&#34;Utility function for using multiprocessing for evaluation.&#34;&#34;&#34;
+    _, score = get_recommendation(
+        test_df.iloc[i].to_dict(), profiles_df, mode, model, topk, threshold)
+    return score
+
+
+def eval_test_recos(test_df, profiles_df, mode=&#39;ml&#39;, model=None,
+                    topk=5, threshold=0.25, multiprocessing=True):
+    &#34;&#34;&#34;Evaluates the recommendation model on test_df using profiles_df as
+    the database of dating profiles.
+
+    Args:
+        test_df (pandas.DataFrame): test set dating profiles
+        profiles_df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from [&#39;naive&#39;, &#39;ml&#39;]. Defaults to &#39;ml&#39;.
+            &#39;naive&#39; calculates score by simple averaging.
+            &#39;ml&#39; calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+        multiprocessing (bool, optional): Indicates if multiprocessing should be used.
+            Defaults to True.
+
+    Returns:
+        float: Average recommendation performance on test_df.
+    &#34;&#34;&#34;
+    model = pickle.load(
+        open(f&#39;{model}-model.pkl&#39;, &#39;rb&#39;)) if mode == &#39;ml&#39; else None
+
+    if not multiprocessing:
+        rel_scores = []  # container for test relevancy scores
+        for i, row in tqdm(test_df.iterrows(), total=len(test_df)):
+            _, score = get_recommendation(
+                row.to_dict(), profiles_df, mode, model, topk, threshold)
+            rel_scores.append(score)
+
+    else:
+        n = len(test_df)
+        with ProcessPoolExecutor() as executor:  # use multiprocessing to speed up
+            rel_scores = list(tqdm(executor.map(process, range(n), repeat(test_df, n),
+                                                repeat(profiles_df, n), repeat(
+                                                    mode, n), repeat(model, n),
+                                                repeat(topk, n), repeat(threshold, n)), total=n))
+    return np.mean(rel_scores)
+
+
+if __name__ == &#34;__main__&#34;:
+    ap = argparse.ArgumentParser()
+    ap.add_argument(&#34;--mode&#34;, required=False, default=&#39;ml&#39;)
+    ap.add_argument(&#34;--model&#34;, required=False, default=&#39;logistic&#39;)
+    ap.add_argument(&#34;--topk&#34;, required=False, type=int, default=5)
+    ap.add_argument(&#34;--threshold&#34;, required=False, type=float, default=0.25)
+    ap.add_argument(&#34;--samplesize&#34;, required=False, type=int, default=100)
+
+    av = ap.parse_args()
+
+    test_df = pd.read_csv(&#39;../data/test.csv&#39;)
+    profiles_df = pd.read_csv(&#39;../data/train.csv&#39;)
+
+    test_df = test_df.fillna(&#39;&#39;)
+    profiles_df = profiles_df.fillna(&#39;&#39;)
+
+    test_df = test_df.sample(av.samplesize)
+    del av.samplesize
+
+    eval_score = eval_test_recos(test_df, profiles_df, **av.__dict__)
+
+    print(f&#39;Recommendation Relevancy Score: {eval_score:.4f}&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="DatingRecommender.eval.eval_test_recos"><code class="name flex">
+<span>def <span class="ident">eval_test_recos</span></span>(<span>test_df, profiles_df, mode='ml', model=None, topk=5, threshold=0.25, multiprocessing=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluates the recommendation model on test_df using profiles_df as
+the database of dating profiles.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>test_df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>test set dating profiles</dd>
+<dt><strong><code>profiles_df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>database of dating profiles</dd>
+<dt><strong><code>mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Choose from ['naive', 'ml']. Defaults to 'ml'.
+'naive' calculates score by simple averaging.
+'ml' calculates scores by employing specified machine learning model</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>optional</code></dt>
+<dd>ML classification model to be used. Defaults to None.
+Sklearn classification models are accepted. Eg. [LogisticRegression,
+LinearSVC, MLPClassifer]</dd>
+<dt><strong><code>topk</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of top recommendations to return. Defaults to 5.</dd>
+<dt><strong><code>threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>relevance threshold in [0,1] range. Defaults to 0.25.</dd>
+<dt><strong><code>multiprocessing</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Indicates if multiprocessing should be used.
+Defaults to True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Average recommendation performance on test_df.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def eval_test_recos(test_df, profiles_df, mode=&#39;ml&#39;, model=None,
+                    topk=5, threshold=0.25, multiprocessing=True):
+    &#34;&#34;&#34;Evaluates the recommendation model on test_df using profiles_df as
+    the database of dating profiles.
+
+    Args:
+        test_df (pandas.DataFrame): test set dating profiles
+        profiles_df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from [&#39;naive&#39;, &#39;ml&#39;]. Defaults to &#39;ml&#39;.
+            &#39;naive&#39; calculates score by simple averaging.
+            &#39;ml&#39; calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+        multiprocessing (bool, optional): Indicates if multiprocessing should be used.
+            Defaults to True.
+
+    Returns:
+        float: Average recommendation performance on test_df.
+    &#34;&#34;&#34;
+    model = pickle.load(
+        open(f&#39;{model}-model.pkl&#39;, &#39;rb&#39;)) if mode == &#39;ml&#39; else None
+
+    if not multiprocessing:
+        rel_scores = []  # container for test relevancy scores
+        for i, row in tqdm(test_df.iterrows(), total=len(test_df)):
+            _, score = get_recommendation(
+                row.to_dict(), profiles_df, mode, model, topk, threshold)
+            rel_scores.append(score)
+
+    else:
+        n = len(test_df)
+        with ProcessPoolExecutor() as executor:  # use multiprocessing to speed up
+            rel_scores = list(tqdm(executor.map(process, range(n), repeat(test_df, n),
+                                                repeat(profiles_df, n), repeat(
+                                                    mode, n), repeat(model, n),
+                                                repeat(topk, n), repeat(threshold, n)), total=n))
+    return np.mean(rel_scores)</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.eval.get_recommendation"><code class="name flex">
+<span>def <span class="ident">get_recommendation</span></span>(<span>A, df, mode='ml', model=None, topk=5, threshold=0.25)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns recommended dating profiles for input user A from database df.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>A</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Input user profile</dd>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>database of dating profiles</dd>
+<dt><strong><code>mode</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Choose from ['naive', 'ml']. Defaults to 'ml'.
+'naive' calculates score by simple averaging.
+'ml' calculates scores by employing specified machine learning model</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>optional</code></dt>
+<dd>ML classification model to be used. Defaults to None.
+Sklearn classification models are accepted. Eg. [LogisticRegression,
+LinearSVC, MLPClassifer]</dd>
+<dt><strong><code>topk</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of top recommendations to return. Defaults to 5.</dd>
+<dt><strong><code>threshold</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>relevance threshold in [0,1] range. Defaults to 0.25.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(list[dict], list[int]): (topk profiles, boolean relevancy score)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_recommendation(A, df, mode=&#39;ml&#39;, model=None, topk=5, threshold=0.25):
+    &#34;&#34;&#34;Returns recommended dating profiles for input user A from database df.
+
+    Args:
+        A (dict): Input user profile
+        df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from [&#39;naive&#39;, &#39;ml&#39;]. Defaults to &#39;ml&#39;.
+            &#39;naive&#39; calculates score by simple averaging.
+            &#39;ml&#39; calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+
+    Returns:
+        (list[dict], list[int]): (topk profiles, boolean relevancy score)
+    &#34;&#34;&#34;
+    # A = df.iloc[i].to_dict()
+    matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
+    if len(matches) &gt; 100:
+        matches = matches.sample(100)  # restrict candidate pool
+
+    X, y = [], []
+    for i, row in matches.iterrows():
+        X.append(get_compatibility_feature(A, row.to_dict()))
+        y.append(get_proxy_label(A, row.to_dict()))
+    X, y = np.asarray(X), np.asarray(y)
+
+    if mode == &#39;naive&#39;:
+        scores = np.mean(X, axis=-1)
+    elif mode == &#39;ml&#39;:
+        assert model is not None, &#34;In ML mode, trained model must be provided.&#34;
+        scores = model.predict_proba(X)[:, 1]
+
+    reco_indices = (-scores).argsort()[:topk]
+    reco_profiles = df.iloc[reco_indices].to_dict(&#39;records&#39;)
+    reco_scores, reco_y = scores[reco_indices], y[reco_indices]
+
+    reco_relevance = int(((1*(reco_scores &gt;= threshold) @ reco_y) /
+                          len(reco_y)) &gt;= 0.6) if len(scores) &gt; topk else 1
+
+    return reco_profiles, reco_relevance</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.eval.process"><code class="name flex">
+<span>def <span class="ident">process</span></span>(<span>i, test_df, profiles_df, mode, model, topk, threshold)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Utility function for using multiprocessing for evaluation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def process(i, test_df, profiles_df, mode, model, topk, threshold):
+    &#34;&#34;&#34;Utility function for using multiprocessing for evaluation.&#34;&#34;&#34;
+    _, score = get_recommendation(
+        test_df.iloc[i].to_dict(), profiles_df, mode, model, topk, threshold)
+    return score</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="DatingRecommender" href="index.html">DatingRecommender</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="DatingRecommender.eval.eval_test_recos" href="#DatingRecommender.eval.eval_test_recos">eval_test_recos</a></code></li>
+<li><code><a title="DatingRecommender.eval.get_recommendation" href="#DatingRecommender.eval.get_recommendation">get_recommendation</a></code></li>
+<li><code><a title="DatingRecommender.eval.process" href="#DatingRecommender.eval.process">process</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

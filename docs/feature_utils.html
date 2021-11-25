@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>DatingRecommender.feature_utils API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>DatingRecommender.feature_utils</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+from collections import defaultdict
+import math
+import re
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import nltk
+# nltk.download(&#39;stopwords&#39;)
+
+
+def clean_and_process_text(tokens, stemmer=PorterStemmer(),
+                           stop_words=stopwords.words(&#39;english&#39;)):
+    &#34;&#34;&#34;Applies stemming and casefolding on text, removes stopwords.&#34;&#34;&#34;
+    tokens = [token.lower() for token in tokens]  # casefolding
+    tokens = [token for token in tokens if token not in stop_words]
+    tokens = [stemmer.stem(token) for token in tokens]
+    return tokens
+
+
+def ageFeature(x, y):
+    &#34;Returns compatibility feature for the age attributes of x and y&#34;
+    age_diff = abs(int(x) - int(y))
+    if age_diff &lt; 3:
+        feat = 1
+    elif age_diff &lt; 5:
+        feat = 1/(age_diff+1)
+    else:
+        feat = 0
+    return feat
+
+
+def bodyTypeFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to body types that are closer to each other
+    based on position on the spectrum of body-types of x and y.&#34;&#34;&#34;
+    def bodyTypeToNum(x):  # All such functions are heuristics based.
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;thin|skinny&#34;, x):
+            num_x = 3
+        elif re.search(&#34;average|fit&#34;, x):
+            num_x = 4
+        elif re.search(&#34;athletic|jacked&#34;, x):
+            num_x = 5
+        elif re.search(&#34;overweight|a little extra|curvy|full figured&#34;, x):
+            num_x = 3
+        elif re.search(&#34;used up&#34;, x):
+            num_x = 2
+        else:
+            num_x = 0
+        return num_x
+
+    num_x, num_y = bodyTypeToNum(x), bodyTypeToNum(y)
+    # normalizing using max to restrict 0 to 1 feature weight
+    return np.log10(num_x*num_y+1)/np.log10(26)
+
+
+def dietFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar diets of x and y.&#34;&#34;&#34;
+    def dietToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;vegetarian|vegan&#34;, x):
+            num_x = 2
+        elif re.search(&#34;kosher&#34;, x):
+            num_x = 7
+        elif re.search(&#34;halal&#34;, x):
+            num_x = 10
+        elif x is not None:
+            num_x = 5
+        else:  # no response case
+            num_x = 0
+        return num_x
+
+    if x == y:  # perfect match
+        return 1
+    else:
+        num_x, num_y = dietToNum(x), dietToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0
+
+
+def drinkFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar drinking habits of x and y.&#34;&#34;&#34;
+    def drinkToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;often|desperate|playmate|present&#34;, x):
+            num_x = 1
+        elif re.search(&#34;social&#34;, x):
+            num_x = 2
+        elif re.search(&#34;rare&#34;, x):
+            num_x = 3
+        elif re.search(&#34;no|never&#34;, x):
+            num_x = 4
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = drinkToNum(x), drinkToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0
+
+
+def drugFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar drug usage of x and y.&#34;&#34;&#34;
+    def drugToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;often&#34;, x):
+            num_x = 1
+        elif re.search(&#34;sometimes&#34;, x):
+            num_x = 2
+        elif re.search(&#34;never&#34;, x):
+            num_x = 3
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = drugToNum(x), drugToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0
+
+
+def educationFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similary educated pairs of x and y.&#34;&#34;&#34;
+    def educationToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;space|high school&#34;, x):
+            num_x = 1
+        elif re.search(&#34;college&#34;, x):
+            num_x = 2
+        elif re.search(&#34;univ|master&#34;, x):
+            num_x = 3
+        elif re.search(&#34;law|med|ph&#34;, x):
+            num_x = 4
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = educationToNum(x), educationToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0
+
+
+def religionFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to pairs of x and y with similar religious beliefs.&#34;&#34;&#34;
+    if x == y:
+        feat = 1
+    elif x != &#39;atheism&#39; and y != &#39;atheism&#39;:
+        a, b = set(x.split()), set(y.split())
+        feat = len(a &amp; b) / len(a | b)  # jaccard similarity of tokens
+    elif (x == &#39;atheism&#39; and y != &#39;atheism&#39;) or (y == &#39;atheism&#39; and x != &#39;atheism&#39;):
+        feat = 1/10
+    else:
+        feat = 0
+    return feat
+
+
+def smokeFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar smoking habits of x and y.&#34;&#34;&#34;
+    def smokeToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;yes&#34;, x):
+            num_x = 1
+        elif re.search(&#34;sometime|drinking|trying to quit&#34;, x):
+            num_x = 2
+        elif re.search(&#34;no|never&#34;, x):
+            num_x = 3
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = smokeToNum(x), smokeToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0
+
+
+def essaysFeature(x, y, tokenizer=nltk.RegexpTokenizer(r&#34;\w+&#34;)):
+    &#34;&#34;&#34;Returns max of cosine and jaccard similarity between input essays.&#34;&#34;&#34;
+    def check_tokenization(x):
+        if isinstance(x, str):
+            return tokenizer.tokenize(x)
+        elif isinstance(x, list):
+            return x
+        else:
+            raise ValueError(&#39;Invalid essay data type&#39;)
+
+    x, y = check_tokenization(x), check_tokenization(y)
+    x, y = clean_and_process_text(x), clean_and_process_text(y)
+    dict_x, dict_y = defaultdict(int), defaultdict(int)
+
+    for token in x:
+        dict_x[token] += 1
+    for token in y:
+        dict_y[token] += 1
+
+    mag_x = np.linalg.norm(np.asarray(list(dict_x.values())))
+    mag_y = np.linalg.norm(np.asarray(list(dict_y.values())))
+
+    x_tokens, y_tokens = set(dict_x.keys()), set(dict_y.keys())
+    union_tokens = x_tokens | y_tokens
+
+    cosine_score = 0.0
+    for token in union_tokens:
+        cosine_score += dict_x[token]*dict_y[token]
+    cosine_score = cosine_score / (mag_x*mag_y) \
+         if mag_x != 0 and mag_y != 0 else 0
+    jaccard_score = len(x_tokens &amp; y_tokens) / len(union_tokens) \
+        if len(union_tokens) != 0 else 0
+
+    return max(cosine_score, jaccard_score)
+
+
+def petFeature(x, y):
+    &#34;&#34;&#34;Calculates similarity in pet preferences of x and y.&#34;&#34;&#34;
+
+    if not isinstance(x, str) or not isinstance(y, str):
+        return 0
+
+    def get_pet_sentiments(x):
+        x_cat, x_dog = 0, 0
+        if &#39;likes cats&#39; in x:
+            x_cat = 1
+        elif &#39;dislikes cats&#39; in x:
+            x_cat = -1
+        if &#39;likes dogs&#39; in x:
+            x_dog = 1
+        elif &#39;dislikes dogs&#39; in x:
+            x_dog = -1
+
+        return x_cat, x_dog
+
+    x_cat, x_dog = get_pet_sentiments(x)
+    y_cat, y_dog = get_pet_sentiments(y)
+
+    pet_score = (x_cat == y_cat) + (x_dog == y_dog)
+
+    return pet_score
+
+
+def get_feature_funcs():
+    &#34;&#34;&#34;Returns a dict of (attr, feature_func).&#34;&#34;&#34;
+    funcs = {
+        &#39;age&#39;: ageFeature,
+        &#39;body_type&#39;: bodyTypeFeature,
+        &#39;diet&#39;: dietFeature,
+        &#39;drinks&#39;: drinkFeature,
+        &#39;drugs&#39;: drugFeature,
+        &#39;education&#39;: educationFeature,
+        &#39;religion&#39;: religionFeature,
+        &#39;essay0&#39;: essaysFeature,
+        &#39;essay1&#39;: essaysFeature,
+        &#39;essay2&#39;: essaysFeature,
+        &#39;essay3&#39;: essaysFeature,
+        &#39;essay4&#39;: essaysFeature,
+        &#39;essay5&#39;: essaysFeature,
+        &#39;essay6&#39;: essaysFeature,
+        &#39;essay7&#39;: essaysFeature,
+        &#39;essay8&#39;: essaysFeature,
+        &#39;essay9&#39;: essaysFeature
+    }
+    return funcs
+
+
+def get_compatibility_feature(X, Y, feature_funcs=get_feature_funcs()):
+    &#34;&#34;&#34;Generates a compatibility feature vector for Users X and Y.
+
+    Args:
+        X (dict): dating profile of user X filtered for recommendation
+        Y (dict): dating profile of user Y filtered for recommendation
+
+    Returns:
+        ndarray: feature vector of X and Y &#39;s compatibility.
+    &#34;&#34;&#34;
+
+    assert set(X.keys()) == set(
+        Y.keys()), &#34;both users should have the same feature keys.&#34;
+    compat_feature = []
+
+    for key in X:
+        if key in feature_funcs:
+            compat_feature.append(feature_funcs[key](X[key], Y[key]))
+
+    return np.asarray(compat_feature)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="DatingRecommender.feature_utils.ageFeature"><code class="name flex">
+<span>def <span class="ident">ageFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns compatibility feature for the age attributes of x and y</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ageFeature(x, y):
+    &#34;Returns compatibility feature for the age attributes of x and y&#34;
+    age_diff = abs(int(x) - int(y))
+    if age_diff &lt; 3:
+        feat = 1
+    elif age_diff &lt; 5:
+        feat = 1/(age_diff+1)
+    else:
+        feat = 0
+    return feat</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.bodyTypeFeature"><code class="name flex">
+<span>def <span class="ident">bodyTypeFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to body types that are closer to each other
+based on position on the spectrum of body-types of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bodyTypeFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to body types that are closer to each other
+    based on position on the spectrum of body-types of x and y.&#34;&#34;&#34;
+    def bodyTypeToNum(x):  # All such functions are heuristics based.
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;thin|skinny&#34;, x):
+            num_x = 3
+        elif re.search(&#34;average|fit&#34;, x):
+            num_x = 4
+        elif re.search(&#34;athletic|jacked&#34;, x):
+            num_x = 5
+        elif re.search(&#34;overweight|a little extra|curvy|full figured&#34;, x):
+            num_x = 3
+        elif re.search(&#34;used up&#34;, x):
+            num_x = 2
+        else:
+            num_x = 0
+        return num_x
+
+    num_x, num_y = bodyTypeToNum(x), bodyTypeToNum(y)
+    # normalizing using max to restrict 0 to 1 feature weight
+    return np.log10(num_x*num_y+1)/np.log10(26)</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.clean_and_process_text"><code class="name flex">
+<span>def <span class="ident">clean_and_process_text</span></span>(<span>tokens, stemmer=&lt;PorterStemmer&gt;, stop_words=['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies stemming and casefolding on text, removes stopwords.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clean_and_process_text(tokens, stemmer=PorterStemmer(),
+                           stop_words=stopwords.words(&#39;english&#39;)):
+    &#34;&#34;&#34;Applies stemming and casefolding on text, removes stopwords.&#34;&#34;&#34;
+    tokens = [token.lower() for token in tokens]  # casefolding
+    tokens = [token for token in tokens if token not in stop_words]
+    tokens = [stemmer.stem(token) for token in tokens]
+    return tokens</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.dietFeature"><code class="name flex">
+<span>def <span class="ident">dietFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to similar diets of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dietFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar diets of x and y.&#34;&#34;&#34;
+    def dietToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;vegetarian|vegan&#34;, x):
+            num_x = 2
+        elif re.search(&#34;kosher&#34;, x):
+            num_x = 7
+        elif re.search(&#34;halal&#34;, x):
+            num_x = 10
+        elif x is not None:
+            num_x = 5
+        else:  # no response case
+            num_x = 0
+        return num_x
+
+    if x == y:  # perfect match
+        return 1
+    else:
+        num_x, num_y = dietToNum(x), dietToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.drinkFeature"><code class="name flex">
+<span>def <span class="ident">drinkFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to similar drinking habits of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def drinkFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar drinking habits of x and y.&#34;&#34;&#34;
+    def drinkToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;often|desperate|playmate|present&#34;, x):
+            num_x = 1
+        elif re.search(&#34;social&#34;, x):
+            num_x = 2
+        elif re.search(&#34;rare&#34;, x):
+            num_x = 3
+        elif re.search(&#34;no|never&#34;, x):
+            num_x = 4
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = drinkToNum(x), drinkToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.drugFeature"><code class="name flex">
+<span>def <span class="ident">drugFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to similar drug usage of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def drugFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar drug usage of x and y.&#34;&#34;&#34;
+    def drugToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;often&#34;, x):
+            num_x = 1
+        elif re.search(&#34;sometimes&#34;, x):
+            num_x = 2
+        elif re.search(&#34;never&#34;, x):
+            num_x = 3
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = drugToNum(x), drugToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.educationFeature"><code class="name flex">
+<span>def <span class="ident">educationFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to similary educated pairs of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def educationFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similary educated pairs of x and y.&#34;&#34;&#34;
+    def educationToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;space|high school&#34;, x):
+            num_x = 1
+        elif re.search(&#34;college&#34;, x):
+            num_x = 2
+        elif re.search(&#34;univ|master&#34;, x):
+            num_x = 3
+        elif re.search(&#34;law|med|ph&#34;, x):
+            num_x = 4
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = educationToNum(x), educationToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.essaysFeature"><code class="name flex">
+<span>def <span class="ident">essaysFeature</span></span>(<span>x, y, tokenizer=RegexpTokenizer(pattern=&#x27;\\w+&#x27;, gaps=False, discard_empty=True, flags=&lt;RegexFlag.UNICODE|DOTALL|MULTILINE: 56&gt;))</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns max of cosine and jaccard similarity between input essays.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def essaysFeature(x, y, tokenizer=nltk.RegexpTokenizer(r&#34;\w+&#34;)):
+    &#34;&#34;&#34;Returns max of cosine and jaccard similarity between input essays.&#34;&#34;&#34;
+    def check_tokenization(x):
+        if isinstance(x, str):
+            return tokenizer.tokenize(x)
+        elif isinstance(x, list):
+            return x
+        else:
+            raise ValueError(&#39;Invalid essay data type&#39;)
+
+    x, y = check_tokenization(x), check_tokenization(y)
+    x, y = clean_and_process_text(x), clean_and_process_text(y)
+    dict_x, dict_y = defaultdict(int), defaultdict(int)
+
+    for token in x:
+        dict_x[token] += 1
+    for token in y:
+        dict_y[token] += 1
+
+    mag_x = np.linalg.norm(np.asarray(list(dict_x.values())))
+    mag_y = np.linalg.norm(np.asarray(list(dict_y.values())))
+
+    x_tokens, y_tokens = set(dict_x.keys()), set(dict_y.keys())
+    union_tokens = x_tokens | y_tokens
+
+    cosine_score = 0.0
+    for token in union_tokens:
+        cosine_score += dict_x[token]*dict_y[token]
+    cosine_score = cosine_score / (mag_x*mag_y) \
+         if mag_x != 0 and mag_y != 0 else 0
+    jaccard_score = len(x_tokens &amp; y_tokens) / len(union_tokens) \
+        if len(union_tokens) != 0 else 0
+
+    return max(cosine_score, jaccard_score)</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.get_compatibility_feature"><code class="name flex">
+<span>def <span class="ident">get_compatibility_feature</span></span>(<span>X, Y, feature_funcs={&#x27;age&#x27;: &lt;function ageFeature&gt;, &#x27;body_type&#x27;: &lt;function bodyTypeFeature&gt;, &#x27;diet&#x27;: &lt;function dietFeature&gt;, &#x27;drinks&#x27;: &lt;function drinkFeature&gt;, &#x27;drugs&#x27;: &lt;function drugFeature&gt;, &#x27;education&#x27;: &lt;function educationFeature&gt;, &#x27;religion&#x27;: &lt;function religionFeature&gt;, &#x27;essay0&#x27;: &lt;function essaysFeature&gt;, &#x27;essay1&#x27;: &lt;function essaysFeature&gt;, &#x27;essay2&#x27;: &lt;function essaysFeature&gt;, &#x27;essay3&#x27;: &lt;function essaysFeature&gt;, &#x27;essay4&#x27;: &lt;function essaysFeature&gt;, &#x27;essay5&#x27;: &lt;function essaysFeature&gt;, &#x27;essay6&#x27;: &lt;function essaysFeature&gt;, &#x27;essay7&#x27;: &lt;function essaysFeature&gt;, &#x27;essay8&#x27;: &lt;function essaysFeature&gt;, &#x27;essay9&#x27;: &lt;function essaysFeature&gt;})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a compatibility feature vector for Users X and Y.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dating profile of user X filtered for recommendation</dd>
+<dt><strong><code>Y</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dating profile of user Y filtered for recommendation</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ndarray</code></dt>
+<dd>feature vector of X and Y 's compatibility.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_compatibility_feature(X, Y, feature_funcs=get_feature_funcs()):
+    &#34;&#34;&#34;Generates a compatibility feature vector for Users X and Y.
+
+    Args:
+        X (dict): dating profile of user X filtered for recommendation
+        Y (dict): dating profile of user Y filtered for recommendation
+
+    Returns:
+        ndarray: feature vector of X and Y &#39;s compatibility.
+    &#34;&#34;&#34;
+
+    assert set(X.keys()) == set(
+        Y.keys()), &#34;both users should have the same feature keys.&#34;
+    compat_feature = []
+
+    for key in X:
+        if key in feature_funcs:
+            compat_feature.append(feature_funcs[key](X[key], Y[key]))
+
+    return np.asarray(compat_feature)</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.get_feature_funcs"><code class="name flex">
+<span>def <span class="ident">get_feature_funcs</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a dict of (attr, feature_func).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_feature_funcs():
+    &#34;&#34;&#34;Returns a dict of (attr, feature_func).&#34;&#34;&#34;
+    funcs = {
+        &#39;age&#39;: ageFeature,
+        &#39;body_type&#39;: bodyTypeFeature,
+        &#39;diet&#39;: dietFeature,
+        &#39;drinks&#39;: drinkFeature,
+        &#39;drugs&#39;: drugFeature,
+        &#39;education&#39;: educationFeature,
+        &#39;religion&#39;: religionFeature,
+        &#39;essay0&#39;: essaysFeature,
+        &#39;essay1&#39;: essaysFeature,
+        &#39;essay2&#39;: essaysFeature,
+        &#39;essay3&#39;: essaysFeature,
+        &#39;essay4&#39;: essaysFeature,
+        &#39;essay5&#39;: essaysFeature,
+        &#39;essay6&#39;: essaysFeature,
+        &#39;essay7&#39;: essaysFeature,
+        &#39;essay8&#39;: essaysFeature,
+        &#39;essay9&#39;: essaysFeature
+    }
+    return funcs</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.petFeature"><code class="name flex">
+<span>def <span class="ident">petFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates similarity in pet preferences of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def petFeature(x, y):
+    &#34;&#34;&#34;Calculates similarity in pet preferences of x and y.&#34;&#34;&#34;
+
+    if not isinstance(x, str) or not isinstance(y, str):
+        return 0
+
+    def get_pet_sentiments(x):
+        x_cat, x_dog = 0, 0
+        if &#39;likes cats&#39; in x:
+            x_cat = 1
+        elif &#39;dislikes cats&#39; in x:
+            x_cat = -1
+        if &#39;likes dogs&#39; in x:
+            x_dog = 1
+        elif &#39;dislikes dogs&#39; in x:
+            x_dog = -1
+
+        return x_cat, x_dog
+
+    x_cat, x_dog = get_pet_sentiments(x)
+    y_cat, y_dog = get_pet_sentiments(y)
+
+    pet_score = (x_cat == y_cat) + (x_dog == y_dog)
+
+    return pet_score</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.religionFeature"><code class="name flex">
+<span>def <span class="ident">religionFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to pairs of x and y with similar religious beliefs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def religionFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to pairs of x and y with similar religious beliefs.&#34;&#34;&#34;
+    if x == y:
+        feat = 1
+    elif x != &#39;atheism&#39; and y != &#39;atheism&#39;:
+        a, b = set(x.split()), set(y.split())
+        feat = len(a &amp; b) / len(a | b)  # jaccard similarity of tokens
+    elif (x == &#39;atheism&#39; and y != &#39;atheism&#39;) or (y == &#39;atheism&#39; and x != &#39;atheism&#39;):
+        feat = 1/10
+    else:
+        feat = 0
+    return feat</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.feature_utils.smokeFeature"><code class="name flex">
+<span>def <span class="ident">smokeFeature</span></span>(<span>x, y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gives higher weight to similar smoking habits of x and y.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def smokeFeature(x, y):
+    &#34;&#34;&#34;Gives higher weight to similar smoking habits of x and y.&#34;&#34;&#34;
+    def smokeToNum(x):
+        try: x = x.lower()
+        except: pass
+        if re.search(&#34;yes&#34;, x):
+            num_x = 1
+        elif re.search(&#34;sometime|drinking|trying to quit&#34;, x):
+            num_x = 2
+        elif re.search(&#34;no|never&#34;, x):
+            num_x = 3
+        else:
+            num_x = 0
+        return num_x
+
+    if x == y:
+        return 1
+    else:
+        num_x, num_y = smokeToNum(x), smokeToNum(y)
+        return 1/(abs(num_x-num_y)+1) if num_x != 0 and num_y != 0 else 0</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="DatingRecommender" href="index.html">DatingRecommender</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="DatingRecommender.feature_utils.ageFeature" href="#DatingRecommender.feature_utils.ageFeature">ageFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.bodyTypeFeature" href="#DatingRecommender.feature_utils.bodyTypeFeature">bodyTypeFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.clean_and_process_text" href="#DatingRecommender.feature_utils.clean_and_process_text">clean_and_process_text</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.dietFeature" href="#DatingRecommender.feature_utils.dietFeature">dietFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.drinkFeature" href="#DatingRecommender.feature_utils.drinkFeature">drinkFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.drugFeature" href="#DatingRecommender.feature_utils.drugFeature">drugFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.educationFeature" href="#DatingRecommender.feature_utils.educationFeature">educationFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.essaysFeature" href="#DatingRecommender.feature_utils.essaysFeature">essaysFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.get_compatibility_feature" href="#DatingRecommender.feature_utils.get_compatibility_feature">get_compatibility_feature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.get_feature_funcs" href="#DatingRecommender.feature_utils.get_feature_funcs">get_feature_funcs</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.petFeature" href="#DatingRecommender.feature_utils.petFeature">petFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.religionFeature" href="#DatingRecommender.feature_utils.religionFeature">religionFeature</a></code></li>
+<li><code><a title="DatingRecommender.feature_utils.smokeFeature" href="#DatingRecommender.feature_utils.smokeFeature">smokeFeature</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

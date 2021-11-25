@@ -6,10 +6,28 @@ from proxy_label_assignment import get_proxy_label
 from feature_utils import get_compatibility_feature
 from train_data_gen import iscandidate
 from tqdm import tqdm
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor
 from itertools import repeat
 
+
 def get_recommendation(A, df, mode='ml', model=None, topk=5, threshold=0.25):
+    """Returns recommended dating profiles for input user A from database df.
+
+    Args:
+        A (dict): Input user profile
+        df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from ['naive', 'ml']. Defaults to 'ml'.
+            'naive' calculates score by simple averaging.
+            'ml' calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+
+    Returns:
+        (list[dict], list[int]): (topk profiles, boolean relevancy score)
+    """
     # A = df.iloc[i].to_dict()
     matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
     if len(matches) > 100:
@@ -38,14 +56,34 @@ def get_recommendation(A, df, mode='ml', model=None, topk=5, threshold=0.25):
 
 
 def process(i, test_df, profiles_df, mode, model, topk, threshold):
+    """Utility function for using multiprocessing for evaluation."""
     _, score = get_recommendation(
         test_df.iloc[i].to_dict(), profiles_df, mode, model, topk, threshold)
     return score
 
 
 def eval_test_recos(test_df, profiles_df, mode='ml', model=None,
-                     topk=5, threshold=0.25, multiprocessing=True):
+                    topk=5, threshold=0.25, multiprocessing=True):
+    """Evaluates the recommendation model on test_df using profiles_df as
+    the database of dating profiles.
 
+    Args:
+        test_df (pandas.DataFrame): test set dating profiles
+        profiles_df (pandas.DataFrame): database of dating profiles
+        mode (str, optional): Choose from ['naive', 'ml']. Defaults to 'ml'.
+            'naive' calculates score by simple averaging.
+            'ml' calculates scores by employing specified machine learning model
+        model (optional): ML classification model to be used. Defaults to None.
+            Sklearn classification models are accepted. Eg. [LogisticRegression,
+            LinearSVC, MLPClassifer]
+        topk (int, optional): Number of top recommendations to return. Defaults to 5.
+        threshold (float, optional): relevance threshold in [0,1] range. Defaults to 0.25.
+        multiprocessing (bool, optional): Indicates if multiprocessing should be used.
+            Defaults to True.
+
+    Returns:
+        float: Average recommendation performance on test_df.
+    """
     model = pickle.load(
         open(f'{model}-model.pkl', 'rb')) if mode == 'ml' else None
 

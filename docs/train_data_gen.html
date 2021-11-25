@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>DatingRecommender.train_data_gen API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>DatingRecommender.train_data_gen</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+import pandas as pd
+from proxy_label_assignment import get_proxy_label
+from feature_utils import get_compatibility_feature
+from tqdm import tqdm
+from concurrent.futures import ProcessPoolExecutor
+from itertools import repeat
+
+np.random.seed(123)
+
+def check_gender_and_orientation(X, Y):
+    &#34;&#34;&#34;Returns whether Y is sexually compatible with X.&#34;&#34;&#34;
+    def isMale(X):
+        return True if X[&#39;sex&#39;]==&#39;m&#39; else False
+    if X[&#39;orientation&#39;] == &#39;straight&#39;:
+        return isMale(X) != isMale(Y)
+    elif X[&#39;orientation&#39;] == &#39;gay&#39;:
+        return isMale(X) == isMale(Y)
+    elif X[&#39;orientation&#39;] == &#39;bisexual&#39;:
+        return True
+
+
+def check_location_compatibility(X, Y):
+    &#34;&#34;&#34;Returns whether X and Y are compatible location-wise.&#34;&#34;&#34;
+    return X[&#39;location&#39;] == Y[&#39;location&#39;]
+
+
+def iscandidate(X, Y):
+    &#34;&#34;&#34;Returns whether X and Y are mutually valid candidates.
+    Reciprocal compatibility is checked by our framework.&#34;&#34;&#34;
+    return check_location_compatibility(X, Y) and \
+        check_gender_and_orientation(X, Y) and \
+        check_gender_and_orientation(Y, X)
+
+
+def generate_traindata_for_profile(i, df, num_pairs):
+    &#34;&#34;&#34;Generates training pairs for A
+
+    Args:
+        i ([type]): row index of profile under consideration
+        df ([type]): Complete dataset of profiles available for training
+        num_pairs (int, optional): max number of candidate pairs to be sampled
+
+    Returns:
+        [list[list[float]], list[int]]: returns X, y proxy training 
+        data for a particular profile.
+    &#34;&#34;&#34;
+    A = df.iloc[i].to_dict()
+    matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
+    matches = matches.sample(min(len(matches), num_pairs))
+    
+    X, y = [], []
+    for i, row in matches.iterrows():
+        X.append(get_compatibility_feature(A, row.to_dict()))
+        y.append(get_proxy_label(A, row.to_dict()))
+
+    return X, y
+
+def generate_trainset(df, per_profile_pairs=10):
+    &#34;&#34;&#34;Generates training data with proxy labels
+
+    Args:
+        df (pandas.DataFrame): profile data from train set
+        per_profile_pairs (int, optional): max number of pairs to \
+            sample per profile. Defaults to 10.
+
+    Returns:
+        (ndarray, ndarray): train_X, train_y
+    &#34;&#34;&#34;
+    X, y = [], []
+    # for i, row in tqdm(df.iterrows(), total=len(df)):
+    #     X_temp, y_temp = generate_traindata_for_profile(row.to_dict(),
+    #                                 df, num_pairs=per_profile_pairs)
+    #     X += X_temp
+    #     y += y_temp
+    n = len(df)
+    with ProcessPoolExecutor() as executor: # use multiprocessing to speed up
+        results = list(tqdm(executor.map(generate_traindata_for_profile,
+         range(n), repeat(df, n), repeat(per_profile_pairs, n)), total=n))
+
+    for result in results:
+        X += result[0]
+        y += result[1]
+
+    X = np.asarray(X)
+    y = np.asarray(y)
+    print(&#39;Training Data Ready. Shape details:&#39;)
+    print(f&#39;X: {X.shape}, y: {y.shape}&#39;)
+    return X, y
+
+
+if __name__ == &#34;__main__&#34;:
+    df = pd.read_csv(&#39;../data/train.csv&#39;)
+    df = df.fillna(&#39;&#39;)
+
+    X, y = generate_trainset(df)
+
+    np.save(&#39;../data/trainX.npy&#39;, X)
+    np.save(&#39;../data/trainy.npy&#39;, y)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="DatingRecommender.train_data_gen.check_gender_and_orientation"><code class="name flex">
+<span>def <span class="ident">check_gender_and_orientation</span></span>(<span>X, Y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns whether Y is sexually compatible with X.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_gender_and_orientation(X, Y):
+    &#34;&#34;&#34;Returns whether Y is sexually compatible with X.&#34;&#34;&#34;
+    def isMale(X):
+        return True if X[&#39;sex&#39;]==&#39;m&#39; else False
+    if X[&#39;orientation&#39;] == &#39;straight&#39;:
+        return isMale(X) != isMale(Y)
+    elif X[&#39;orientation&#39;] == &#39;gay&#39;:
+        return isMale(X) == isMale(Y)
+    elif X[&#39;orientation&#39;] == &#39;bisexual&#39;:
+        return True</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.train_data_gen.check_location_compatibility"><code class="name flex">
+<span>def <span class="ident">check_location_compatibility</span></span>(<span>X, Y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns whether X and Y are compatible location-wise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_location_compatibility(X, Y):
+    &#34;&#34;&#34;Returns whether X and Y are compatible location-wise.&#34;&#34;&#34;
+    return X[&#39;location&#39;] == Y[&#39;location&#39;]</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.train_data_gen.generate_traindata_for_profile"><code class="name flex">
+<span>def <span class="ident">generate_traindata_for_profile</span></span>(<span>i, df, num_pairs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates training pairs for A</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>i</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>row index of profile under consideration</dd>
+<dt><strong><code>df</code></strong> :&ensp;<code>[type]</code></dt>
+<dd>Complete dataset of profiles available for training</dd>
+<dt><strong><code>num_pairs</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>max number of candidate pairs to be sampled</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>[list[list[float]], list[int]]</code></dt>
+<dd>returns X, y proxy training </dd>
+</dl>
+<p>data for a particular profile.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_traindata_for_profile(i, df, num_pairs):
+    &#34;&#34;&#34;Generates training pairs for A
+
+    Args:
+        i ([type]): row index of profile under consideration
+        df ([type]): Complete dataset of profiles available for training
+        num_pairs (int, optional): max number of candidate pairs to be sampled
+
+    Returns:
+        [list[list[float]], list[int]]: returns X, y proxy training 
+        data for a particular profile.
+    &#34;&#34;&#34;
+    A = df.iloc[i].to_dict()
+    matches = df[df.apply(lambda row: iscandidate(A, row.to_dict()), axis=1)]
+    matches = matches.sample(min(len(matches), num_pairs))
+    
+    X, y = [], []
+    for i, row in matches.iterrows():
+        X.append(get_compatibility_feature(A, row.to_dict()))
+        y.append(get_proxy_label(A, row.to_dict()))
+
+    return X, y</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.train_data_gen.generate_trainset"><code class="name flex">
+<span>def <span class="ident">generate_trainset</span></span>(<span>df, per_profile_pairs=10)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates training data with proxy labels</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pandas.DataFrame</code></dt>
+<dd>profile data from train set</dd>
+<dt><strong><code>per_profile_pairs</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>max number of pairs to
+sample per profile. Defaults to 10.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(ndarray, ndarray): train_X, train_y</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_trainset(df, per_profile_pairs=10):
+    &#34;&#34;&#34;Generates training data with proxy labels
+
+    Args:
+        df (pandas.DataFrame): profile data from train set
+        per_profile_pairs (int, optional): max number of pairs to \
+            sample per profile. Defaults to 10.
+
+    Returns:
+        (ndarray, ndarray): train_X, train_y
+    &#34;&#34;&#34;
+    X, y = [], []
+    # for i, row in tqdm(df.iterrows(), total=len(df)):
+    #     X_temp, y_temp = generate_traindata_for_profile(row.to_dict(),
+    #                                 df, num_pairs=per_profile_pairs)
+    #     X += X_temp
+    #     y += y_temp
+    n = len(df)
+    with ProcessPoolExecutor() as executor: # use multiprocessing to speed up
+        results = list(tqdm(executor.map(generate_traindata_for_profile,
+         range(n), repeat(df, n), repeat(per_profile_pairs, n)), total=n))
+
+    for result in results:
+        X += result[0]
+        y += result[1]
+
+    X = np.asarray(X)
+    y = np.asarray(y)
+    print(&#39;Training Data Ready. Shape details:&#39;)
+    print(f&#39;X: {X.shape}, y: {y.shape}&#39;)
+    return X, y</code></pre>
+</details>
+</dd>
+<dt id="DatingRecommender.train_data_gen.iscandidate"><code class="name flex">
+<span>def <span class="ident">iscandidate</span></span>(<span>X, Y)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns whether X and Y are mutually valid candidates.
+Reciprocal compatibility is checked by our framework.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def iscandidate(X, Y):
+    &#34;&#34;&#34;Returns whether X and Y are mutually valid candidates.
+    Reciprocal compatibility is checked by our framework.&#34;&#34;&#34;
+    return check_location_compatibility(X, Y) and \
+        check_gender_and_orientation(X, Y) and \
+        check_gender_and_orientation(Y, X)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="DatingRecommender" href="index.html">DatingRecommender</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="DatingRecommender.train_data_gen.check_gender_and_orientation" href="#DatingRecommender.train_data_gen.check_gender_and_orientation">check_gender_and_orientation</a></code></li>
+<li><code><a title="DatingRecommender.train_data_gen.check_location_compatibility" href="#DatingRecommender.train_data_gen.check_location_compatibility">check_location_compatibility</a></code></li>
+<li><code><a title="DatingRecommender.train_data_gen.generate_traindata_for_profile" href="#DatingRecommender.train_data_gen.generate_traindata_for_profile">generate_traindata_for_profile</a></code></li>
+<li><code><a title="DatingRecommender.train_data_gen.generate_trainset" href="#DatingRecommender.train_data_gen.generate_trainset">generate_trainset</a></code></li>
+<li><code><a title="DatingRecommender.train_data_gen.iscandidate" href="#DatingRecommender.train_data_gen.iscandidate">iscandidate</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
